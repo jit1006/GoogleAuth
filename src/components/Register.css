@@ -1,0 +1,301 @@
+/* Register.css */
+
+/* Variables for colors and effects */
+:root {
+    --bg-gradient: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    --primary-glow: 0 0 20px rgba(78, 205, 196, 0.6);
+    --text-main: #ffffff;
+    --text-secondary: #a0a0a0;
+    --accent-color: #4ecdc4;
+    --input-bg: rgba(255, 255, 255, 0.07);
+}
+
+
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-gradient);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+    /* Allow scrolling if content overflows */
+}
+
+/* Background floating elements */
+.floating-shapes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.shape {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(78, 205, 196, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
+    filter: blur(20px);
+    animation: float 20s infinite ease-in-out;
+}
+
+.shape:nth-child(1) {
+    top: -10%;
+    left: -10%;
+    width: 400px;
+    height: 400px;
+    animation-delay: 0s;
+}
+
+.shape:nth-child(2) {
+    bottom: -10%;
+    right: -10%;
+    width: 500px;
+    height: 500px;
+    animation-delay: -5s;
+    background: radial-gradient(circle, rgba(255, 107, 107, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+}
+
+.shape:nth-child(3) {
+    top: 40%;
+    left: 80%;
+    width: 200px;
+    height: 200px;
+    animation-delay: -10s;
+}
+
+/* Main Container */
+.register-container {
+    position: relative;
+    z-index: 1;
+    perspective: 1000px;
+}
+
+/* Glassmorphism Card */
+.register-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    border-radius: 20px;
+    padding: 40px;
+    width: 380px;
+    text-align: center;
+    animation: levitate 6s ease-in-out infinite;
+    transform-style: preserve-3d;
+    margin: 0 auto;
+    /* Centers the card horizontally */
+}
+
+.register-title {
+    color: var(--text-main);
+    font-size: 2rem;
+    margin-bottom: 30px;
+    font-weight: 600;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    letter-spacing: 1px;
+}
+
+/* Form Styles */
+.register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-group {
+    position: relative;
+}
+
+.register-input {
+    width: 100%;
+    padding: 15px 20px 15px 45px;
+    /* Left padding for icon space if we added icons */
+    background: var(--input-bg);
+    border: 1px solid transparent;
+    border-radius: 12px;
+    color: var(--text-main);
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.register-input::placeholder {
+    color: var(--text-secondary);
+}
+
+.register-input:focus {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 15px rgba(78, 205, 196, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Buttons */
+.create-account-btn {
+    margin-top: 10px;
+    padding: 15px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #4ecdc4 0%, #556270 100%);
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(78, 205, 196, 0.4);
+}
+
+.create-account-btn:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(78, 205, 196, 0.6);
+}
+
+.create-account-btn:active {
+    transform: translateY(-1px);
+}
+
+.google-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px;
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-main);
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 10px auto;
+    width: 100%;
+}
+
+.google-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: white;
+}
+
+/* Links */
+.login-link {
+    margin-top: 25px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.login-link a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: text-shadow 0.3s ease;
+}
+
+.login-link a:hover {
+    text-shadow: 0 0 8px var(--accent-color);
+}
+
+/* Error Message */
+.error-msg {
+    color: #ff6b6b;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    animation: shake 0.5s ease-in-out;
+}
+
+/* Animations */
+@keyframes levitate {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    25% {
+        transform: translate(20px, -20px);
+    }
+
+    50% {
+        transform: translate(-10px, 30px);
+    }
+
+    75% {
+        transform: translate(-30px, -10px);
+    }
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    20%,
+    60% {
+        transform: translateX(-5px);
+    }
+
+    40%,
+    80% {
+        transform: translateX(5px);
+    }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .register-card {
+        width: 90%;
+        padding: 30px 20px;
+    }
+}
+
+/* Separator */
+.auth-separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.auth-separator::before,
+.auth-separator::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.auth-separator::before {
+    margin-right: 10px;
+}
+
+.auth-separator::after {
+    margin-left: 10px;
+}
+
+.separator-text {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
