@@ -4,7 +4,7 @@ import firebaseLogo from './assets/firebase-logo.png'
 
 import viteLogo from '/vite.svg'
 import './App.css'
-import Login from './components/Login'
+import UserLogin from './components/UserLogin'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Register from './components/Register';
 import Home from './components/Home';
@@ -28,7 +28,7 @@ function App() {
         <Router>
           <Routes>
             <Route path='/' element={<Register />} />
-            <Route path='/login' element={<Login />} />
+            <Route path='/login' element={<UserLogin />} />
             <Route path='/home' element={<Home />} />
 
           </Routes>

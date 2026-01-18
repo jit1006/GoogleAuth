@@ -4,7 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
 import './Register.css'; // Reusing the same styles
 
-export default function Login() {
+export default function UserLogin() {
     const navigate = useNavigate();
     const [error, setError] = useState(null);
 
